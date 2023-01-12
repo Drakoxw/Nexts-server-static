@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Script from 'next/script'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { Button, Icon, Text } from '@aveonline/ui-react'
 
 import { logDev } from '../utils/'
 
@@ -37,18 +37,17 @@ export default function Home () {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+          
+        <Text className='text-center mt-6' color='critical' variant='caption'>
+          <Icon kind='novelty' className='mr-1' />
+          Recuerda que deben ser como <b>mínimo 8 caracteres, un número y una letra mayúscula.</b>
+        </Text>
 
-        <button onClick={() => {
-          signIn('google')
-        }} className="mt-3 h-10 w-[12rem] rounded-xl bg-green-700 text-white">
-          Singin GOOGLE
-        </button>
-
-        <button onClick={() => {
-          signIn('github')
-        }} className="mt-3 h-10 w-[12rem] rounded-xl bg-green-700 text-white">
-          Singin GIT-HUB
-        </button>
+        <div className="mt-4">
+          <Button fullWidth isDisabled variant='primary'>Iniciar sesión</Button>
+          <br />
+          <Button fullWidth type='submit' variant='primary'>Iniciar sesión</Button>
+        </div>
 
         <Link href="/api/auth/signout">
           <button onClick={(e) => {
